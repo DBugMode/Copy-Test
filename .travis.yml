@@ -14,8 +14,8 @@ before_install:
 
 install:
   - echo "Install stage"
-  - brew update
-  - brew upgrade xctool
+#  - brew update
+#  - brew upgrade xctool
 #  - npm i
   - echo "END - install stage"
 #  - sudo npm install -g cordova
