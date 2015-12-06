@@ -26,7 +26,7 @@ before_script:
 # Commands to excecute before running tests
   - echo "Before script stage"
 script:
-  - xcodebuild -scheme IMMSlackerClient  -sdk iphonesimulator -enableCodeCoverage YES  test | xcpretty --color
+  - xcodebuild -scheme IMMSlackerClient  -sdk iphonesimulator  test | xcpretty --color
 
 # script:
 # Run tests
