@@ -1,0 +1,33 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Volumes/Macintosh SSD1/Users/manojshenoy/CSCI-E-71_IMM_Slacker_Client_iOS/build/Release-iphoneos/IMMSlackerClient.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "IMMSlackerClient-Swift.h",
+          'external-contents': "/Volumes/Macintosh SSD1/Users/manojshenoy/CSCI-E-71_IMM_Slacker_Client_iOS/build/Release-iphoneos/IMMSlackerClient.framework/Headers/IMMSlackerClient-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "IMMSlackerClient.h",
+          'external-contents': "/Volumes/Macintosh SSD1/Users/manojshenoy/CSCI-E-71_IMM_Slacker_Client_iOS/IMMSlackerClient/IMMSlackerClient.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Volumes/Macintosh SSD1/Users/manojshenoy/CSCI-E-71_IMM_Slacker_Client_iOS/build/Release-iphoneos/IMMSlackerClient.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Volumes/Macintosh SSD1/Users/manojshenoy/CSCI-E-71_IMM_Slacker_Client_iOS/build/IMMSlackerClient.build/Release-iphoneos/IMMSlackerClient.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}
