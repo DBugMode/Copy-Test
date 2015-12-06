@@ -26,7 +26,7 @@ before_script:
 # Commands to excecute before running tests
   - echo "Before script stage"
 script:
-  - xctool clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -scheme "IMMSlackerClient" test -sdk iphonesimulator -arch "i386" ONLY_ACTIVE_ARCH=NO VALID_ARCHS="i386 x86_64"
+  - xcodebuild -scheme IMMSlackerClient  -sdk iphonesimulator -enableCodeCoverage YES  test | xcpretty -f `xcpretty-travis-formatter`
 
 # script:
 # Run tests
