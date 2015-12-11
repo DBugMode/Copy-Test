@@ -4,12 +4,12 @@
   'roots': [
     {
       'type': 'directory',
-      'name': "/Volumes/Macintosh SSD1/Users/manojshenoy/CSCI-E-71_IMM_Slacker_Client_iOS/build/Release-iphoneos/IMMSlackerClient.framework/Headers",
+      'name': "/var/root/Library/Developer/Xcode/DerivedData/IMMSlackerClient-hfgjlzkkvaprjjffdtyyrpmdbwcj/Build/Intermediates/CodeCoverage/IMMSlackerClient/Products/Debug-iphonesimulator/IMMSlackerClient.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "IMMSlackerClient-Swift.h",
-          'external-contents': "/Volumes/Macintosh SSD1/Users/manojshenoy/CSCI-E-71_IMM_Slacker_Client_iOS/build/Release-iphoneos/IMMSlackerClient.framework/Headers/IMMSlackerClient-Swift.h"
+          'external-contents': "/var/root/Library/Developer/Xcode/DerivedData/IMMSlackerClient-hfgjlzkkvaprjjffdtyyrpmdbwcj/Build/Intermediates/CodeCoverage/IMMSlackerClient/Products/Debug-iphonesimulator/IMMSlackerClient.framework/Headers/IMMSlackerClient-Swift.h"
         },
         {
           'type': 'file',
@@ -20,12 +20,12 @@
     },
     {
       'type': 'directory',
-      'name': "/Volumes/Macintosh SSD1/Users/manojshenoy/CSCI-E-71_IMM_Slacker_Client_iOS/build/Release-iphoneos/IMMSlackerClient.framework/Modules",
+      'name': "/var/root/Library/Developer/Xcode/DerivedData/IMMSlackerClient-hfgjlzkkvaprjjffdtyyrpmdbwcj/Build/Intermediates/CodeCoverage/IMMSlackerClient/Products/Debug-iphonesimulator/IMMSlackerClient.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Volumes/Macintosh SSD1/Users/manojshenoy/CSCI-E-71_IMM_Slacker_Client_iOS/build/IMMSlackerClient.build/Release-iphoneos/IMMSlackerClient.build/module.modulemap"
+          'external-contents': "/Volumes/Macintosh SSD1/Users/manojshenoy/CSCI-E-71_IMM_Slacker_Client_iOS/build/IMMSlackerClient.build/Debug-iphonesimulator/IMMSlackerClient.build/module.modulemap"
         }
       ]
     }

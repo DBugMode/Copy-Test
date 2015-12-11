@@ -1,0 +1,1 @@
+ const unsigned char IMMSlackerClientVersionString[] __attribute__ ((used)) = "@(#)PROGRAM:IMMSlackerClient  PROJECT:IMMSlackerClient-25" "\n"; const double IMMSlackerClientVersionNumber __attribute__ ((used)) = (double)25.;

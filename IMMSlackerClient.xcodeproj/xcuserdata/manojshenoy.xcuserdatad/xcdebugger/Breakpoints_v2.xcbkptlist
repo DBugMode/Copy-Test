@@ -9,29 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IMMSlackerClient/IMMSlackerClient.m"
-            timestampString = "470720771.154029"
+            filePath = "IMMSlackerClientTests/IMMSlackerClientTests.m"
+            timestampString = "471555478.107114"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "-checkTokenValidity"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IMMSlackerClient/IMMSlackerClient.m"
-            timestampString = "470721550.518058"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-checkTokenValidity"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "-testSlackAuthenticateURL"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

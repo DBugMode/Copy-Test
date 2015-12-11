@@ -28,7 +28,7 @@
 - (void)testSlackAuthenticateURL
 {
     IMMSlackerClient *immSlackerClient = [IMMSlackerClient sharedInstance];
-   NSString *slackURL = @"https://slack.com/oauth/authorize?client_id=(null)&scope=channels:read&";
+    NSString *slackURL = @"https://slack.com/oauth/authorize?client_id=(null)&scope=channels:read+chat:write:user+chat:write:bot&";
     NSURLRequest *slackRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:slackURL]];
     XCTAssertEqualObjects(slackRequest , [immSlackerClient slackAuthenticateURL:nil]);
 }
@@ -40,7 +40,7 @@
     NSURLRequest *slackRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:slackURL]];
     NSDictionary *normalDict = [[NSDictionary alloc]initWithObjectsAndKeys:@"channels:read+chat:write:user",@"scopes",nil];
     NSArray *options = [[NSArray alloc] initWithObjects:normalDict, nil];
-
+    
     XCTAssertEqualObjects(slackRequest , [immSlackerClient slackAuthenticateURL:options]);
 }
 
@@ -79,12 +79,12 @@
 {
     IMMSlackerClient *immSlackerClient = [IMMSlackerClient sharedInstance];
     immSlackerClient.SlackAccessToken = @"xoxp-10020492535-10633604503-14277704819-ff5c0a80c0";
-
+    
     NSDate *currDate = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"dd.MM.YY HH:mm:ss"];
     NSString *dateString = [dateFormatter stringFromDate:currDate];
-
+    
     
     XCTAssertNoThrow([immSlackerClient postMessage:@"C0F6U0R5E" :[@"Automated Test Message at " stringByAppendingString:dateString ]] );
 }
@@ -94,7 +94,7 @@
     IMMSlackerClient *immSlackerClient = [IMMSlackerClient sharedInstance];
     immSlackerClient.SlackAccessToken = @"xoxp-10020492535-10633604503-14277704819-ff5c0a80c0";
     
-
+    
     XCTAssertFalse([immSlackerClient checkPresence:@"C0F6U0R5E"] );
 }
 
@@ -105,7 +105,23 @@
     immSlackerClient.SlackAccessToken = @"xoxp-10020492535-10633604503-14277704819-ff5c0a80c0";
     
     
-    XCTAssertThrows([immSlackerClient makeRestAPICall:@"C0F6U0R5E"] );
+    XCTAssertThrows([immSlackerClient makeRestAPICall:@"INVALIDURLTEST"] );
+}
+
+-(void)testGetChannelListTrue
+{
+    IMMSlackerClient *immSlackerClient = [IMMSlackerClient sharedInstance];
+    immSlackerClient.SlackAccessToken =  @"xoxp-10020492535-10633604503-14277704819-ff5c0a80c0";
+                                          
+    XCTAssertNoThrow([immSlackerClient getChannelList:YES]);
+}
+
+-(void)testGetChannelListFalse
+{
+    IMMSlackerClient *immSlackerClient = [IMMSlackerClient sharedInstance];
+    immSlackerClient.SlackAccessToken =  @"xoxp-10020492535-10633604503-14277704819-ff5c0a80c0";
+    
+    XCTAssertNoThrow([immSlackerClient getChannelList:NO]);
 }
 
 @end

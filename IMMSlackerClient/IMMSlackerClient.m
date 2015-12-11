@@ -16,7 +16,7 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
 - (NSURLRequest* ) slackAuthenticateURL:(NSArray* ) options
 {
     
-    NSString *scope = @"channels:read";
+    NSString *scope = @"channels:read+chat:write:user+chat:write:bot";
     if(options)
     {
         NSDictionary *optionsSelected = [options objectAtIndex:0];
@@ -85,6 +85,18 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
     
 }
 
+- (NSDictionary *) getChannelList:(BOOL)excludeArchived
+{
+    NSString *exclude = @"0";
+    if(excludeArchived)
+        exclude = @"1";
+    
+        NSString *restCallString = [NSString stringWithFormat:@"%@/channels.list?token=%@&exclude_archived=%@", slackAPIURL, self.SlackAccessToken, exclude ];
+    
+    return  [self makeRestAPICall: restCallString];
+    
+
+}
 
 - (NSDictionary *) makeRestAPICall : (NSString*) reqURL
 {
@@ -108,11 +120,14 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
     [dataTask resume];
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     if (responseError) {
+        NSLog(@"Error in API Call:%@", responseError.description);
         @throw responseError;
     }
     return response;
     
 }
+
+
 
 + (id)sharedInstance
 {

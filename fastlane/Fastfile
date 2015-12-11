@@ -1,0 +1,139 @@
+# Customise this file, documentation can be found here:
+# https://github.com/KrauseFx/fastlane/tree/master/docs
+# All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# By default, fastlane will send which actions are used
+# No personal data is shared, more information on https://github.com/fastlane/enhancer
+# Uncomment the following line to opt out
+# opt_out_usage
+
+# If you want to automatically update fastlane if a new version is available:
+update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "1.42.0"
+
+default_platform :ios
+
+
+platform :ios do
+
+  desc "Setup and Run Tests"
+  before_all do
+    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+
+    # increment_build_number
+
+#    xctest(
+#      scheme: "IMMSlackerClient",
+#      destination: "name=iPhone 6,OS=9.1",
+#      destination_timeout: 120, # increase device/simulator timeout, usually used on slow CI boxes
+#      reports: [{
+#        report: 'html',
+#        output: './build/test-report.html',  # will use XCODE_BUILD_PATH/report, if output is not provided
+#      },
+#      {
+#        report: 'junit',
+#        output: './build/test-report.xml'
+#      }]
+#    )
+
+
+  end
+
+  desc "Run Tests"
+  lane :test do
+  
+  xcodebuild(
+		test: true,
+ 	 	scheme: 'IMMSlackerClient',
+  		workspace: 'IMMSlackerClient.xcworkspace',
+  		sdk: 'iphonesimulator',
+  		 CODE_SIGN_IDENTITY: '',
+  		 ONLY_ACTIVE_ARCH: 'NO',
+  		GCC_INSTRUMENT_PROGRAM_FLOW_ARCS: 'YES',
+  		GCC_GENERATE_TEST_COVERAGE_FILES: 'YES',
+)
+
+#duplicate effort but xctool does not seem load the simulator so only some tests go throught
+    xctool :test, [
+      "--project", "'IMMSlackerClient.xcodeproj'",
+      "--scheme", "'IMMSlackerClientXCtoolTest'",
+      "--configuration", "Debug",
+      "--sdk", "iphonesimulator",
+      "OBJROOT=./build",
+      "ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES"
+    ].join(" ")
+
+#    scan(
+#      workspace: "IMMSlackerClient.xcworkspace",
+#      scheme: "IMMSlackerClient",
+#      device: "iPhone 6",
+#      clean: true,
+#      code_coverage: true,
+#      output_directory: "./build"
+#    )
+
+    gcovr(
+      print_summary: true,
+      html: true,
+      html_details: true,
+      exclude: ".*Test.*",
+      output: "build/code-coverage/report.html"
+    )
+
+    gcovr(
+      xml: true,
+      exclude: "'.*Test.*''",
+      output: "build/code-coverage/report.xml"
+    )
+    # sh "coveralls"
+    # You can also use other beta testing services here
+  end
+
+  desc "Submit a new Beta Build"
+  desc "This will also make sure the profile is up to date"
+  lane :build do
+    cert
+    sigh(force: true)
+
+    sh "./fl_build.sh"
+
+  end
+
+  desc "Deploy a new version to the App Store"
+  lane :deploy do
+    # snapshot
+    sigh
+    gym(scheme: "IMMSlackerClient") # Build your app - more options available
+    # deliver(force: true)
+    # frameit
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    # slack(
+    #   message: "Successfully deployed new App Update."
+    # )
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
+end
+
+
+
+# More information about multiple platforms in fastlane: https://github.com/KrauseFx/fastlane/blob/master/docs/Platforms.md
+# All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md
