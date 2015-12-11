@@ -43,10 +43,10 @@
                   Identifier = "IMMSlackerClientTests/testCheckTokenValidityFalse">
                </Test>
                <Test
-                  Identifier = "IMMSlackerClientTests/testCheckTokenValidityTrue">
+                  Identifier = "IMMSlackerClientTests/testCheckTokenValidityNil">
                </Test>
                <Test
-                  Identifier = "IMMSlackerClientTests/testGetChannelList">
+                  Identifier = "IMMSlackerClientTests/testCheckTokenValidityTrue">
                </Test>
                <Test
                   Identifier = "IMMSlackerClientTests/testGetChannelListFalse">
